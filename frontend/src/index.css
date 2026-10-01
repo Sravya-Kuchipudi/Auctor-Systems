@@ -1,0 +1,176 @@
+/* =============================================================================
+   AUCTOR SYSTEMS — PALETTE 4 DESIGN SYSTEM & BASE STYLES
+   Deep Wine + Midnight Navy + Dusty Rose + Pearl + White
+   ============================================================================= */
+
+:root {
+  /* ── Palette 4 Core Tokens ─────────────────────────────────────────────── */
+  --wine: #3A1028;            /* Primary: Header, branding, main active states */
+  --wine-dark: #270B1B;       /* Dark wine for deep contrast & shadows */
+  --burgundy: #541B3B;        /* Secondary: Primary buttons, active controls, working state */
+  --burgundy-hover: #69224A;  /* Hover state for burgundy elements */
+  --burgundy-light: #F4ECF1;  /* Very soft burgundy tint */
+  
+  --navy: #20243A;            /* Dark Secondary: Code Inspector, technical surfaces */
+  --navy-surface: #273049;    /* Secondary navy for code tabs, borders */
+  --navy-light: #343E5C;      /* Code highlight/border */
+  
+  --rose: #B68A9A;            /* Accent: Thinking states, activity, soft highlights */
+  --rose-light: #F5EEF1;      /* Subtle rose background tint */
+  --rose-glow: rgba(182, 138, 154, 0.35);
+  
+  --pearl: #F5F4F5;           /* Background: Main workspace, large surfaces */
+  --pearl-dark: #EAE8EB;      /* Darker pearl for section dividers */
+  --white: #FFFFFF;           /* Surface: Cards, inputs, preview canvas */
+  
+  --border-light: #E7E5E8;    /* Clean neutral borders */
+  --border-subtle: #EFECEF;   /* Very faint internal lines */
+  --border-medium: #D8D5DA;   /* Active border boundaries */
+
+  /* ── Typography Tokens ─────────────────────────────────────────────────── */
+  --text-primary: #29232B;    /* Headings, body text, agent names */
+  --text-secondary: #6B6C78;  /* Supporting text, labels, metadata */
+  --text-muted: #9E9EA8;      /* Faint icons, placeholders */
+  --text-on-dark: #F5F4F5;    /* Code & dark surface text */
+
+  /* ── Semantic Accents ─────────────────────────────────────────────────── */
+  --sage: #718276;            /* Success ONLY: Completed agents, tests pass, deployed */
+  --sage-light: #EFF4F0;      /* Sage soft tint */
+  --gold: #C79A4A;            /* Premium accent (SPARING): Logo "A", handoffs, milestones */
+  --gold-light: #FCF8F0;      /* Gold soft tint */
+  --error: #B85C5C;           /* Error ONLY: Failed states, errors */
+  --error-light: #FCF0F0;     /* Error soft tint */
+
+  /* ── Typography Families ───────────────────────────────────────────────── */
+  --font-serif: 'Fraunces', 'Playfair Display', Garamond, Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* ── Elevation & Radii ─────────────────────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-pill: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(41, 35, 43, 0.04);
+  --shadow-md: 0 4px 12px rgba(41, 35, 43, 0.06), 0 1px 3px rgba(41, 35, 43, 0.03);
+  --shadow-lg: 0 10px 26px rgba(41, 35, 43, 0.08), 0 2px 6px rgba(41, 35, 43, 0.03);
+  --shadow-wine: 0 6px 20px rgba(58, 16, 40, 0.25);
+  --shadow-rose: 0 0 16px rgba(182, 138, 154, 0.3);
+  --shadow-gold: 0 0 12px rgba(199, 154, 74, 0.35);
+
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Reset & Global ────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--pearl);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography Utilities ─────────────────────────────────────────────────── */
+.font-serif { font-family: var(--font-serif); }
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); }
+
+/* ── Clean Scrollbars ────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ── Refined Animations for Palette 4 ────────────────────────────────────── */
+@keyframes pulse-rose {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(182, 138, 154, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(182, 138, 154, 0.55);
+  }
+}
+
+@keyframes pulse-burgundy {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(84, 27, 59, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(84, 27, 59, 0.45);
+  }
+}
+
+@keyframes handoff-signal {
+  0% {
+    stroke-dashoffset: 24;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2.5px); }
+}
+
+@keyframes sweep-burgundy {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+.animate-rose-glow {
+  animation: pulse-rose 2.8s ease-in-out infinite;
+}
+
+.animate-burgundy-glow {
+  animation: pulse-burgundy 2.2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
+/* ── Accessible Focus States ──────────────────────────────────────────────── */
+button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--burgundy);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
